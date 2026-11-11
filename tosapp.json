@@ -1,0 +1,88 @@
+{
+  "app_id": "databagdocker",
+  "title": "Databag",
+  "image": "balzack/databag:0.1.18",
+  "repo_name": "databag",
+  "mode": "plain",
+  "container_port": 7000,
+  "category": [
+    "Utilities"
+  ],
+  "volumes": [
+    {
+      "host": "/Volume1/DockerAppData/databagdocker/data",
+      "container": "/var/lib/databag"
+    }
+  ],
+  "env": {
+    "TZ": "Asia/Shanghai"
+  },
+  "auth": "Moechz",
+  "upstream_url": "",
+  "upstream_license": "",
+  "descript": "Databag packaged for TerraMaster TOS 7. It runs the official Docker Hub image inside a container on your NAS, keeps all of its data in an application data folder (so it survives restarts and updates), and is opened from its desktop icon.",
+  "release_note": "1. First release.",
+  "important": "First run: open the web UI and complete the initial setup. Data lives in /Volume1/DockerAppData/databagdocker/ and survives restarts and updates. The container runs as uid 1000, so mounted folders must be readable by that user. Needs DockerEngine; configure a registry mirror if Docker Hub is unreachable. Back up the application data folder before uninstalling with data removal. Plain HTTP on the LAN.",
+  "probe": {
+    "user_in_image": "(root)",
+    "entrypoint": [
+      "/bin/sh",
+      "-c",
+      "/app/databag/net/server/entrypoint.sh"
+    ],
+    "cmd": null,
+    "exposed_ports": [
+      7000
+    ],
+    "declared_volumes": [],
+    "image_healthcheck": [],
+    "digest": "balzack/databag@sha256:37c4ab38f64842afa44ed8aea0e47271112795180708f0cb7be8ee7c7defebac",
+    "architecture": "x86_64",
+    "platforms": [],
+    "http_client_in_image": "curl",
+    "trial_run": {
+      "ok": false,
+      "http_code": "",
+      "state": "exited",
+      "paths": [],
+      "host_port": 18000,
+      "log_tail": "Error: unable to open database \"/var/lib/databag/databag.db\": unable to open database file",
+      "files_in_mounts": ""
+    },
+    "docker_hub": {},
+    "github": {}
+  },
+  "healthcheck": [
+    "CMD-SHELL",
+    "wget -q -O /dev/null http://127.0.0.1:7000/ || exit 1"
+  ],
+  "entrypoint_file": "src/entrypoint.sh",
+  "platform": "x86_64",
+  "user": "1000:1000",
+  "publisher": "Moechz",
+  "compose_project": "databagdocker",
+  "github_repo": "databag",
+  "upstream_version": "0.1.18",
+  "release_tag_prefix": "v",
+  "version": "0.1.18-1",
+  "help": "https://github.com/Moechz/databag/issues",
+  "official": "https://github.com/Moechz/databag/issues",
+  "license": "see upstream",
+  "docker_socket": false,
+  "group_add": [],
+  "platforms": [
+    "x86_64",
+    "aarch64"
+  ],
+  "translations": {
+    "zh-cn": {
+      "descript": "轻量去中心化聊天服务器，支持私聊与群组。",
+      "important": "首次使用请打开网页完成初始化。数据保存在 DockerAppData/databagdocker，重启和升级不会丢失。容器以 uid 1000 运行，挂载目录需对该用户可读。需要 DockerEngine；Docker Hub 不可达时先配置镜像加速。卸载并删除数据前请备份。局域网内为 HTTP。"
+    },
+    "zh-hk": {
+      "descript": "轻量去中心化聊天服务器，支持私聊与群组。",
+      "important": "首次使用請開啟網頁完成初始化。資料保存在 DockerAppData/databagdocker，重新啟動和升級不會遺失。容器以 uid 1000 運行，掛載目錄需對該使用者可讀。需要 DockerEngine；Docker Hub 不可達時先設定鏡像加速。解除安裝並刪除資料前請備份。區域網路內為 HTTP。"
+    }
+  },
+  "host_port": 8059
+}
