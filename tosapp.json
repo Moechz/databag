@@ -64,7 +64,7 @@
   "github_repo": "databag",
   "upstream_version": "0.1.18",
   "release_tag_prefix": "v",
-  "version": "0.1.18-1",
+  "version": "0.1.18-2",
   "help": "https://github.com/Moechz/databag/issues",
   "official": "https://github.com/Moechz/databag/issues",
   "license": "see upstream",
